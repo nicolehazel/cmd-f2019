@@ -37,6 +37,13 @@ public class ScanBarcode extends AppCompatActivity implements OnClickListener {
         }
     }
 
+    public void onButtonClick(View v) {
+        if (v.getId() == R.id.recycle_symbol) {
+            Intent i = new Intent(ScanBarcode.this, Symbol_meaning.class);
+            startActivity(i);
+        }
+    }
+
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
     //retrieve scan result
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);

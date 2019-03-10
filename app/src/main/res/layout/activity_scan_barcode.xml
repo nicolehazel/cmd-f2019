@@ -3,11 +3,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    <Button android:id="@+id/scan_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+
+    <Button
+        android:id="@+id/bottom_panel"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:background="@color/colorPrimary"
+        android:layout_marginBottom="0dp"
+        android:layout_alignParentBottom="true" />
+
+
+    <Button
+        android:id="@+id/recycle_symbol"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:background="@drawable/recycling_symbol"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="18dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="35dp" />
+
+
+    <Button
+        android:id="@+id/bins"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:background="@drawable/bins"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="18dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="35dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="35dp" />
+
+
+    <Button
+        android:id="@+id/scan_button"
+        android:layout_width="159dp"
+        android:layout_height="159dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/scan" />
+        android:layout_marginBottom="-20dp"
+        android:background="@drawable/circle_button"
+        android:text="@string/scan"
+        android:textSize="24sp" />
 
 <TextView
 android:id="@+id/scan_format"

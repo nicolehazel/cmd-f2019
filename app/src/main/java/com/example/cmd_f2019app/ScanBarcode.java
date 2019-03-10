@@ -44,6 +44,13 @@ public class ScanBarcode extends AppCompatActivity implements OnClickListener {
         }
     }
 
+    public void onBinClick(View v) {
+        if (v.getId() == R.id.bins) {
+            Intent i = new Intent(ScanBarcode.this, Bin_meaning.class);
+            startActivity(i);
+        }
+    }
+
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
     //retrieve scan result
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);

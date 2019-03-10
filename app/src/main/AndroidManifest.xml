@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".Symbol_meaning"></activity>
         <activity android:name=".Bin_meaning"></activity>
+        <activity android:name=".Scan_result"></activity>
     </application>
 
 </manifest>

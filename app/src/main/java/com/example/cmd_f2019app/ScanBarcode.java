@@ -58,13 +58,18 @@ public class ScanBarcode extends AppCompatActivity implements OnClickListener {
             //we have a result
             String scanContent = scanningResult.getContents();
             String scanFormat = scanningResult.getFormatName();
+            String result = "Return-it Beverage Containers - Drop-Off";
+
             formatTxt.setText("FORMAT: " + scanFormat);
             contentTxt.setText("CONTENT: " + scanContent);
+            contentTxt.setText("OPTION: " + result);
         }
         else{
             Toast toast = Toast.makeText(getApplicationContext(),
                     "No scan data received!", Toast.LENGTH_SHORT);
             toast.show();
         }
+        Intent i = new Intent(ScanBarcode.this, Scan_result.class);
+        startActivity(i);
     }
 }

@@ -49,61 +49,37 @@ public class ScanBarcode extends AppCompatActivity implements OnClickListener {
             String scanContent = scanningResult.getContents();
             String scanFormat = scanningResult.getFormatName();
 
-            String result = db_query("63243275779");
+            Thread thread = new Thread() {
+                @Override
+                public void run() {
+                    try { Thread.sleep(2000); }
+                    catch (InterruptedException e) {}
 
-            formatTxt.setText("FORMAT: " + scanFormat);
-            contentTxt.setText("CONTENT: " + result);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            String result = db_query(scanContent);
+
+                            query q = new query();
+                            q.execute(scanContent);
+
+                            formatTxt.setText("FORMAT: " + scanFormat);
+                            contentTxt.setText("CONTENT: " + result);
+                        }
+                    });
+                }
+            };
+            thread.start();
+
+
+
+
+
 
 
         } else {
             Toast toast = Toast.makeText(getApplicationContext(),
                     "No scan data received!", Toast.LENGTH_SHORT);
             toast.show();
-        }
-    }
-
-    public String db_query(String scanContent){
-
-        try
-            {
-                // create our mysql database connection
-                String myDriver = "org.gjt.mm.mysql.Driver";
-                String myUrl = "jdbc:mysql://localhost:8080";
-                Class.forName(myDriver);
-                Connection conn = DriverManager.getConnection(myUrl, "root", "");
-
-                // our SQL SELECT query.
-                // if you only need a few columns, specify them by name instead of using "*"
-                String query = "SELECT option_1,option_2 FROM `db` WHERE UPC = ${scanContent}";
-
-                // create the java statement
-                Statement st = conn.createStatement();
-
-                // execute the query, and get a java resultset
-                ResultSet rs = st.executeQuery(query);
-
-                // iterate through the java resultset
-                while (rs.next())
-                {
-                    String option_1 = rs.getString("option_1");
-                    String option_2 = rs.getString("option_2");
-
-                    String output = option_1.concat(",").concat(option_2);
-
-
-                    // print the results
-                    return output;
-                }
-                st.close();
-            }
-            catch (Exception e)
-            {
-                System.err.println("Got an exception! ");
-                System.err.println(e.getMessage());
-            }
-
-        String warning = "Error";
-        return warning;
-
         }
     }
